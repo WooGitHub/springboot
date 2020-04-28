@@ -57,11 +57,9 @@ public class UserController {
     }
 
     @PostMapping("/update")
-    public String updateUser(Model model,User user,HttpServletRequest request){
-        String id = request.getParameter("id");
-        User userById = userService.findUserById(Integer.parseInt(id));
+    public String updateUser(User user){
         userService.update(user);
-        System.out.println(user);
+        System.out.println("修改的用户为 ： " + user.getUserName());
         return "redirect:/userList";
     }
 }
